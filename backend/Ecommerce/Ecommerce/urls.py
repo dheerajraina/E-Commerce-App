@@ -14,8 +14,34 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('',include('store.urls')),
+
+    
 ]
+
+
+
+# {
+# "name":"Nike Airmax",
+#     "price":5000,
+#     "image":"https://image.shutterstock.com/image-photo/white-nike-air-max-2017-260nw-1407241322.jpg"
+# }
+
+
+# {
+# "email":"dheerajraina@gmail.com",
+# "userName":"Dheeraj",
+#     "password":"Rainadheeraj55",
+#     "name":"Dheeraj Raina"
+# }
+
+
+# {
+# "customer":"D",
+# "cartItems" : "[id:,id:2]"
+# }
