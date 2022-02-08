@@ -131,6 +131,7 @@ class EcommerceApp extends StatelessWidget {
     return MaterialApp(
       home: HomePage(),
       debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark(),
       
     );
   }
