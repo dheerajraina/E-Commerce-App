@@ -1,5 +1,9 @@
+import 'package:ecommerce_app/screens/login_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 
 import 'shopping_cart.dart';
 
@@ -15,10 +19,15 @@ class _HomePageState extends State<HomePage> {
 
   late List cataLog=[];
 
+  bool login=false;
+
+  String username='';
+  String password='';
+
   void initState(){
     super.initState();
 
-    toList(getHttp());
+    toList(getCatalog());
     // fetchCatalog();
   }
 
@@ -40,7 +49,34 @@ class _HomePageState extends State<HomePage> {
     // print(cataLog[0]);
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          'BuyNow',
+          style: TextStyle(
+            fontFamily: 'Comforter',
+            letterSpacing: size.width*0.01,
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+            fontSize: size.width*0.07,
+          ),
+          ),
         actions: [
+          TextButton(
+            onPressed: (){
+              Navigator.push(
+                context, MaterialPageRoute(
+                  builder: (context)=>LoginPage(),
+                  ));
+            }, 
+            child: Text(
+              "Login",
+              style: TextStyle(
+                fontFamily: 'Raleway',
+                fontSize:size.width*0.06,
+                fontWeight: FontWeight.bold,
+              ),
+              
+              )
+            ),
           IconButton(
           onPressed: (){
               Navigator.push(
@@ -63,7 +99,12 @@ class _HomePageState extends State<HomePage> {
               "Catalog",
               style: TextStyle(
                 // fontFamily: ' ',
-                fontSize: size.width*0.05,
+                fontSize: size.width*0.07,
+                letterSpacing:size.width*0.02,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Comforter',
+                // fontStyle: FontStyle.italic,
+
               ),
               ),
             SizedBox(height: size.height*0.1,),
@@ -99,8 +140,11 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                   '${cataLog[index]['name']}',
                                   style: TextStyle(
+                                    fontFamily: 'Raleway',
+                                    // fontStyle: FontStyle.italic,
                                     fontSize: size.height*0.03,
                                     letterSpacing: size.width*0.001,
+                                    fontWeight:FontWeight.bold
                                   ),
                                 ),
                                 
@@ -161,7 +205,30 @@ class _HomePageState extends State<HomePage> {
                            InkWell(
 
                              onTap: (){
-                               print("Added to cart ${cataLog[index]['id']}");
+                              //  print("Added to cart ${cataLog[index]['id']}");
+                              
+                              login? print("Added to cart ${cataLog[index]['id']}")
+                              : showDialog(
+                                context: context, 
+                                builder: (context){
+                                  return    AlertDialog(
+                                        title: Text("Login First"),
+                                        // content: Text("Okay"),
+                                        actions: [
+                                          TextButton(
+                                            onPressed:() {
+                                              Navigator.pop(context, 'Cancel');
+                                            }, 
+                                          child: Text("Okay"),
+                                          ),
+                                        ],
+                                        contentPadding: EdgeInsets.all(100),
+                                      );
+                                  
+                                }
+                                );
+                                
+                              
                              },
                             child: Container(
                               height: size.height*0.05,
