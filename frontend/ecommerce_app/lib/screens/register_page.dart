@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 
@@ -75,6 +76,42 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               
             ),
+          ),
+          InkWell(
+            onTap: (){
+
+                
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(
+                    builder: (context)=>HomePage(),
+                    )
+                  );
+              },
+
+             
+
+            child: Container(
+              margin: EdgeInsets.only(top: size.height*0.1, ),
+              width: size.width*0.4,
+              height: size.width*0.15,
+              decoration: BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Center(
+                child: Text(
+                  'Register',
+                  style: TextStyle(
+
+                    fontSize: size.width*0.06,
+                    letterSpacing: size.width*0.01,
+
+                  ),
+                  ),
+              ),
+            ),
+
           ),
         ],
       ),

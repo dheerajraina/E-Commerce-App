@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/screens/home_screen.dart';
+import 'package:ecommerce_app/screens/register_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart';
@@ -211,6 +212,23 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
           ),
+
+          TextButton(
+            onPressed: (){
+              Navigator.push(
+                context, 
+                MaterialPageRoute(
+                  builder: (context)=>RegisterPage(),
+                  ),
+                );
+            }, 
+            child: Text(
+              "Create Account",
+              style: TextStyle(
+                fontSize: size.width*0.05,
+              ),
+
+              ))
           
         ],
       ),

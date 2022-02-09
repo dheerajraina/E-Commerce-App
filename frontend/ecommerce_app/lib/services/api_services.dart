@@ -68,6 +68,10 @@ Future userAuthentication(username,password) async{
 
 }
 
+Future userRegistration async{
+  
+}
+
 
 
 }
