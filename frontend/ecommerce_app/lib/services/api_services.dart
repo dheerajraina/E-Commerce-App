@@ -68,8 +68,29 @@ Future userAuthentication(username,password) async{
 
 }
 
-Future userRegistration async{
-  
+Future userRegistration(email,username,password,name) async{
+
+//   {
+//  "email":"dheerajraina@gmail.com",
+//  "userName":"Dheeraj",
+//      "password":"Rainadheeraj55",
+//     "name":"Dheeraj Raina"
+//  }
+
+  var userData='{"email" : "$email", "userName":"$username" , "password" : "$password" ,"name" : "$name"}';
+
+
+  var response =await http.post(
+    Uri.parse("http://10.0.2.2:8000/add-customer/"),
+
+    headers: <String ,String>{
+      'Content-Type': 'application/json',
+    },
+
+    body:  userData,
+  );
+  print(response.body);
+  return response.statusCode;
 }
 
 

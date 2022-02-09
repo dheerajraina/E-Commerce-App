@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/screens/home_screen.dart';
+import 'package:ecommerce_app/services/api_services.dart';
 import 'package:flutter/material.dart';
 
 
@@ -10,6 +11,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+
+  String email='';
+  String username='';
+  String password='';
+  String name='';
   @override
   Widget build(BuildContext context) {
     var size=MediaQuery.of(context).size;
@@ -20,6 +26,11 @@ class _RegisterPageState extends State<RegisterPage> {
           Container(
             margin: EdgeInsets.only(top:size.width*0.05,left: size.width*0.03, right: size.width*0.03),
             child: TextField(
+              onChanged: (val){
+                setState(() {
+                  email=val;
+                });
+              },
               decoration: InputDecoration(
                 hintText: 'Enter Email',
                 hintStyle: TextStyle(
@@ -35,6 +46,11 @@ class _RegisterPageState extends State<RegisterPage> {
           Container(
             margin: EdgeInsets.only(top:size.width*0.05,left: size.width*0.03, right: size.width*0.03),
             child: TextField(
+              onChanged: (val){
+                setState(() {
+                  username=val;
+                });
+              },
               decoration: InputDecoration(
                 hintText: ' Enter User Name',
                 hintStyle: TextStyle(
@@ -51,6 +67,11 @@ class _RegisterPageState extends State<RegisterPage> {
           Container(
             margin: EdgeInsets.only(top:size.width*0.05,left: size.width*0.03, right: size.width*0.03),
             child: TextField(
+              onChanged: (val){
+                setState(() {
+                  password=val;
+                });
+              },
               decoration: InputDecoration(
                 hintText: 'Password',
                 hintStyle: TextStyle(
@@ -66,6 +87,11 @@ class _RegisterPageState extends State<RegisterPage> {
           Container(
             margin: EdgeInsets.only(top:size.width*0.05,left: size.width*0.03, right: size.width*0.03),
             child: TextField(
+              onChanged: (val){
+                setState(() {
+                  name=val;
+                });
+              },
               decoration: InputDecoration(
                 hintText: 'Enter Your Name',
                 hintStyle: TextStyle(
@@ -80,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
           InkWell(
             onTap: (){
 
-                
+                APIServices.instance.userRegistration(email, username, password, name);
                 Navigator.push(
                   context, 
                   MaterialPageRoute(
